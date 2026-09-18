@@ -1,0 +1,161 @@
+<!-- info.html -->
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Πληροφορίες Καταστήματος</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="icons/icon_192x192.png">
+
+<style>
+:root{
+--primary:#00c853;--dark:#222;--gray:#666;--light:#f7f7f7;--white:#fff;--card:#ffffff;--shadow:0 4px 12px rgba(0,0,0,0.15)
+}
+
+body{
+margin:0;font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(rgba(205,237,208,.8),rgba(205,237,208,.8)),
+url("chad-montano-MqT0asuoIcU-unsplash.jpg");
+background-size:cover;background-position:center;background-repeat:no-repeat;
+min-height:100vh;display:flex;align-items:center;justify-content:center;
+color:var(--dark)
+}
+
+.container{max-width:520px;width:100%;padding:20px}
+
+.card{
+background:var(--card);
+border-radius:20px;
+padding:24px;
+box-shadow:var(--shadow);
+animation:fadeUp .6s ease
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+h1{
+text-align:center;
+color:#029640;
+margin-bottom:20px;
+font-size:24px
+}
+
+.row{
+display:flex;justify-content:space-between;align-items:flex-start;
+padding:12px 0;border-bottom:1px solid #e5e5e5
+}
+
+.label{font-weight:700;color:#029640;font-size:14px}
+
+.value{color:#222;font-size:14px;text-align:right;max-width:60%}
+
+.payments{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+
+.pay{
+background:#e8f5e9;
+color:#2e7d32;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:600
+}
+
+.back-btn{
+margin-top:22px;width:100%;padding:14px;
+border-radius:14px;border:none;
+background:#00b347;color:#fff;
+font-size:15px;font-weight:700;
+cursor:pointer;
+box-shadow:0 6px 16px rgba(0,0,0,.12);
+.back-btn:active{transform:scale(.97)}
+}
+
+.back-btn:hover{
+margin-top:22px;width:100%;padding:14px;
+border-radius:14px;border:none;
+background:#00c853;color:#fff;
+font-size:15px;font-weight:700;
+cursor:pointer;
+box-shadow:0 6px 16px rgba(0,0,0,.12);
+.back-btn:active{transform:scale(.97)}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+<h1 id="storeName"></h1>
+
+<div class="row"><div class="label">Επωνυμία</div><div id="epwnymia"></div></div>
+<div class="row"><div class="label">ΑΦΜ</div><div id="afm"></div></div>
+<div class="row"><div class="label">ΓΕΜΗ</div><div id="gemi"></div></div>
+<div class="row"><div class="label">Ωράριο</div><div id="hours"></div></div>
+<div class="row">
+<div class="label">Τρόποι Πληρωμής</div>
+<div class="payments" id="payments"></div>
+</div>
+
+<button class="back-btn" onclick="history.back()">Πίσω</button>
+</div>
+</div>
+
+<script>
+const storesInfo = {
+burgerHouse:{
+epwnymia:"Burger House IKE", afm:"111111111", gemi:"123456789000",
+hours:"Δευ–Κυρ: 11:00–22:00",
+payments:["Μετρητά","Κάρτα","Apple Pay"]
+},
+pizzaRoma:{
+epwnymia:"Pizza Roma OE", afm:"222222222", gemi:"987654321000",
+hours:"Δευ–Κυρ: 10:00–23:00",
+payments:["Μετρητά","Κάρτα","PayPal"]
+},
+coffeeLab:{
+epwnymia:"Coffee Lab AE", afm:"333333333", gemi:"555666777000",
+hours:"Δευ–Κυρ: 08:00–20:00",
+payments:["Κάρτα","Apple Pay","Google Pay"]
+},
+souvlakiKing:{
+epwnymia:"Souvlaki King ΙΚΕ", afm:"444444444", gemi:"999888777000",
+hours:"Δευ–Κυρ: 11:00–22:00",
+payments:["Μετρητά","Κάρτα"]
+},
+donutHeaven:{
+epwnymia:"Donut Heaven", afm:"555555555", gemi:"111222333000",
+hours:"Δευ–Κυρ: 09:00–21:00",
+payments:["Μετρητά","Κάρτα","PayPal"]
+},
+healthyBites:{
+epwnymia:"Healthy Bites", afm:"666666666", gemi:"444555666000",
+hours:"Δευ–Κυρ: 10:00–20:00",
+payments:["Κάρτα","Apple Pay","Google Pay"]
+}
+};
+
+const params = new URLSearchParams(window.location.search);
+const storeId = params.get("store");
+const store = storesInfo[storeId];
+
+if(!store){ alert("Δεν βρέθηκαν πληροφορίες καταστήματος"); }
+
+document.getElementById("storeName").textContent = storeId;
+document.getElementById("epwnymia").textContent = store.epwnymia;
+document.getElementById("afm").textContent = store.afm;
+document.getElementById("gemi").textContent = store.gemi;
+document.getElementById("hours").textContent = store.hours;
+
+const payDiv = document.getElementById("payments");
+store.payments.forEach(p=>{
+const span=document.createElement("span");
+span.className="pay";
+span.textContent=p;
+payDiv.appendChild(span);
+});
+</script>
+<script src="back.js" type="module"></script>
+</body>
+</html>

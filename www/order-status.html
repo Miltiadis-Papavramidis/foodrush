@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Παρακολούθηση Παραγγελίας</title>
+  <link rel="icon" type="image/png" href="icons/icon_192x192.png">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-extra.css">
+</head>
+
+<body>
+
+<main class="order-status-page">
+  <section class="order-status-card">
+    <h2 id="orderStatusTitle">
+      Το κατάστημα δέχτηκε την παραγγελία σου ✅
+    </h2>
+    <p id="orderStatusText">
+      Ο ντελιβεράς ετοιμάζεται
+    </p>
+    <div id="map"></div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="order-status.js"></script>
+<script src="back.js" type="module"></script>
+</body>
+</html>

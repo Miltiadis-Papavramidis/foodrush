@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FoodRush - Παράγγειλε φαγητό online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-extra.css">
+<link rel="icon" type="image/png" href="icons/icon_192x192.png">
+</head>
+
+<body data-page="home">
+<div class="page-root" id="pageRoot">
+
+  <div class="app-wrapper">
+    <header>
+    <h1>
+        <a href="index.html" class="logo">FoodRush</a>
+    </h1>
+     <button id="themeToggle" class="theme-toggle" aria-label="Theme toggle">
+  <!-- Sun -->
+  <svg id="sunIcon" viewBox="0 0 24 24" width="22" height="22">
+    <path d="M12 4V2m0 20v-2m8-8h2M2 12H4m14.95 6.95l1.41 1.41M5.64 5.64l1.41 1.41m12.9-1.41l-1.41 1.41M5.64 18.36l-1.41 1.41M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8z"/>
+  </svg>
+  <!-- Moon -->
+  <svg id="moonIcon" viewBox="0 0 24 24" width="22" height="22">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+  </svg>
+</button>
+        <nav>
+          <div class="address-box" onclick="openAddressModal()">
+           <span class="address-label">Παράδοση σε:</span>
+          <span id="active-address">—</span>
+          </div>
+            <a href="stores.html"><img src="store_12671935.png" alt="Καλάθι" class="icon"></a>
+            <a href="cart.html" class="cart-icon"> 
+            <img src="shopping-cart_17216306.png" alt="Καλάθι" class="icon"><span id="cart-count">0</span></a>
+            <button class="icon-btn" onclick="handleProfileClick()" title="Προφίλ">
+  <img src="man_14506340.png" alt="Προφίλ" class="icon">
+</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section animate">
+        <h2 class="animate">Παράγγειλε φαγητό εύκολα & γρήγορα</h2>
+        <p class="animate">Βρες το αγαπημένο σου φαγητό από τα καλύτερα καταστήματα της πόλης σου.</p>
+
+        <form id="searchForm" class="animate">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Αναζήτηση φαγητού ή καταστήματος">
+  <button type="submit">Αναζήτηση</button>
+</form>
+    </section>
+
+<section id="last-order-section" class="last-order-section hidden">
+  <div class="last-order-card">
+    <div class="last-order-header">
+      <span>Η τελευταία σου παραγγελία</span>
+      <span id="lastOrderStatus" class="order-status-badge">Σε εξέλιξη</span>
+    </div>
+
+    <div class="last-order-body">
+      <div class="last-order-store" id="lastOrderStore">—</div>
+      <div class="last-order-meta">
+        <span id="lastOrderTime">—</span>
+        <strong id="lastOrderTotal">—</strong>
+      </div>
+    </div>
+
+    <div class="last-order-actions">
+      <button class="btn-reorder" onclick="reorderLast()">Παρήγγειλε ξανά</button>
+      <button class="btn-receipt" onclick="openLastReceipt()">Απόδειξη</button>
+    </div>
+  </div>
+</section>
+
+    <!-- Categories -->
+    <section class="categories-section animate">
+        <h3 class="animate">Κατηγορίες</h3>
+        <ul class="animate">
+    <li data-category="burgerHouse">Burger</li>
+<li data-category="pizzaRoma">Pizza</li>
+<li data-category="coffeeLab">Καφές</li>
+<li data-category="souvlakiKing">Σουβλάκια</li>
+<li data-category="donutHeaven">Ντόνατ</li>
+<li data-category="healthyBites">Σμούθι</li>
+        </ul>
+    </section>
+
+     <!-- Stores Section -->
+    <section class="stores-section animate">
+        <h3>Δημοφιλή Καταστήματα</h3>
+        <div class="stores-grid animate">
+
+            <div class="store-card" data-store="burgerHouse">
+                <h4>Burger House</h4>
+                <p>⭐ 4.6 · 30-40 λεπτά · Ελάχιστο €8</p>
+            </div>
+
+            <div class="store-card" data-store="pizzaRoma">
+                <h4>Pizza Roma</h4>
+                <p>⭐ 4.4 · 25-35 λεπτά · Ελάχιστο €10</p>
+            </div>
+
+            <div class="store-card" data-store="coffeeLab">
+                <h4>Coffee Lab</h4>
+                <p>⭐ 4.8 · 15-25 λεπτά · Ελάχιστο €5</p>
+            </div>
+
+            <div class="store-card hidden-store" data-store="souvlakiKing">
+                <h4>Souvlaki King</h4>
+                <p>⭐ 4.6 · 30-40 λεπτά · Ελάχιστο €8</p>
+            </div>
+
+            <div class="store-card hidden-store" data-store="donutHeaven">
+                <h4>Donut Heaven</h4>
+                <p>⭐ 4.4 · 25-35 λεπτά · Ελάχιστο €10</p>
+            </div>
+
+            <div class="store-card hidden-store" data-store="healthyBites">
+                <h4>Healthy Bites</h4>
+                <p>⭐ 4.8 · 15-25 λεπτά · Ελάχιστο €5</p>
+            </div>
+    </div>
+        </div>
+    </section>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-center-group">
+      <div class="footer-links">
+        <a href="terms-&-conditions.html">Όροι & Προϋποθέσεις</a>
+        <a href="privacy.html">Πολιτική Απορρήτου</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="contact.html">Επικοινωνία</a>
+      </div>
+      <div class="footer-copy">
+        © 2026 FoodRush. All rights reserved.
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-socials">
+    <a href="https://instagram.com" target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+  </svg></a>
+    <a href="https://facebook.com" target="_blank" rel="noopener">      
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+          stroke="currentColor" stroke-width="2"/>
+    <path d="M14 9h-2V7.5c0-.8.5-1 1-1h1V4h-2
+             c-2 0-3 1.3-3 3.2V9H7v3h2v8h3v-8h2.1L14 9z"
+          fill="currentColor"/>
+         </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="login-blocker" class="address-blocker hidden">
+  <div class="address-blocker-box">
+    <h2>Καλώς ήρθες 👋</h2>
+    <p>Πρέπει να συνδεθείς ή να κάνεις εγγραφή για να συνεχίσεις</p>
+    <button onclick="goToLogin()">Σύνδεση / Εγγραφή</button>
+  </div>
+</div>
+
+<div id="address-blocker" class="address-blocker hidden">
+  <div class="address-blocker-box">
+    <h2>Πού να παραδώσουμε;</h2>
+    <p>Πρέπει να προσθέσεις διεύθυνση για να συνεχίσεις</p>
+    <button onclick="openAddressModal()">Προσθήκη διεύθυνσης</button>
+  </div>
+</div>
+
+<div id="addressModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Οι διευθύνσεις μου</h3>
+    <ul id="addressList"></ul>
+    <!-- ΦΟΡΜΑ (κρυφή στην αρχή) -->
+    <div id="addressForm" class="hidden">
+  <input id="newLabel" placeholder="Π.χ. Σπίτι">
+  <input id="newAddress" placeholder="Οδός, Περιοχή">
+  <ul id="addressSuggestions" class="suggestions hidden"></ul>
+
+  <button class="btn btn-primary" onclick="addAddress()">
+    Αποθήκευση
+  </button>
+</div>
+
+<button class="btn btn-secondary" onclick="showAddressForm()">
+  ➕ Προσθήκη διεύθυνσης
+</button>
+
+<button class="btn btn-ghost" onclick="closeAddressModal()">
+  Κλείσιμο
+</button>
+  </div>
+</div>
+
+<div id="userSideMenu" class="user-sidemenu hidden">
+  <div class="user-header">
+    <span id="userFullname">—</span>
+    <button class="close-btn" onclick="closeUserMenu()">✖</button>
+  </div>
+
+  <ul class="user-menu-list">
+    <li>📩 Εισερχόμενα</li>
+    <li>⭐ Πόντοι & Ανταμοιβές</li>
+    <li>📦 Παραγγελίες</li>
+    <li onclick="goToMyAddresses()">📍 Οι διευθύνσεις μου</li>
+    <li onclick="goToFavorites()">❤️ Αγαπημένα καταστήματα</li>
+    <li>⭐ Αξιολογήσεις</li>
+    <li>⚙ Ρυθμίσεις</li>
+    <li onclick="logout()">🚪 Αποσύνδεση</li>
+    <li onclick="deleteAccount()" class="danger">🗑 Διαγραφή λογαριασμού</li>
+  </ul>
+</div>
+
+    <script src="app.js"></script>
+    <script src="store.js"></script>
+    <script src="cart.js"></script>
+    <script src="address-guard.js"></script>
+    <script src="address.js"></script>
+    <script src="/capacitor.js"></script>
+<script src="back.js"></script>
+<script src="store-page.js"></script>
+<script src="last-order.js"></script>
+<script src="checkout.js"></script>
+<script src="user-system.js"></script>
+<script src="auth-guard.js"></script>
+<script src="favorites.js"></script>
+<script src="my-addresses.js"></script>
+
+</body>
+</html>

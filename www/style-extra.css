@@ -1,0 +1,737 @@
+.checkout-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.checkout-page h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
+.checkout-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  color: #000;
+}
+
+.checkout-item,
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkout-total {
+  font-size: 18px;
+}
+
+/* PAYMENT UI */
+.pay-method{
+  flex:1;
+  padding:14px 16px;
+  border-radius:16px;
+  border:1.5px solid #e0e0e0;
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#222;
+  transition:.25s;
+  box-shadow:0 4px 10px rgba(0,0,0,0.04);
+}
+
+.pay-method .dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  border:2px solid #bbb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.pay-method.active{
+  border-color:#00c853;
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+.pay-method.active .dot{
+  border-color:#00c853;
+}
+
+.pay-method.active .dot::after{
+  content:"";
+  width:6px;
+  height:6px;
+  background:#00c853;
+  border-radius:50%;
+}
+
+/* ===== CARD FORM ===== */
+
+.card-form{
+  margin-top:16px;
+  padding:16px;
+  border-radius:18px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  animation:softFade .35s ease;
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+.card-form input{
+  padding:14px 16px;
+  border-radius:14px;
+  border:1.5px solid #ddd;
+  font-size:15px;
+  background:#fafafa;
+  transition:.25s;
+}
+
+.card-form input:focus{
+  outline:none;
+  border-color:#00c853;
+  box-shadow:0 0 0 3px rgba(0,200,83,0.15);
+  background:#fff;
+}
+
+.card-row{
+  display:flex;
+  gap:12px;
+}
+
+/* subtle animation */
+@keyframes softFade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.address-preview {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.radio-option {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  position: sticky;
+  bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.primary-btn:hover {
+  background: #00b347;
+}
+
+.secondary-btn {
+  background: #eee;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =============================
+   ORDER STATUS (FoodRush style)
+   ============================= */
+
+.order-status-page {
+  min-height: 100vh;
+  padding: 80px 16px;
+
+  background:
+    linear-gradient(rgba(205, 237, 208, 0.85), rgba(205, 237, 208, 0.85)),
+    url("chad-montano-MqT0asuoIcU-unsplash.jpg");
+
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.order-status-card {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+
+  padding: 36px 32px;
+  border-radius: 28px;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  text-align: center;
+}
+
+/* Title */
+#orderStatusTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+#orderStatusText {
+  font-size: 16px;
+  color: var(--primary);
+  opacity: 0.9;
+  margin-bottom: 26px;
+}
+
+/* Map */
+#map {
+  height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* last order*/
+.last-order-section{
+  padding:20px;
+  display:flex;
+  justify-content:center;
+}
+
+.last-order-card{
+  max-width:600px;
+  width:100%;
+  background:var(--card-bg,#fff);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  animation:fadeUp 0.5s ease;
+}
+
+.last-order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  color: #000;
+}
+
+body.dark .last-order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  color: #000;
+}
+
+.order-status-badge{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  background:#e6f0ff;
+  color:#1c5cff;
+}
+
+.last-order-store{
+  font-size:16px;
+  font-weight:600;
+  color: #000;
+}
+
+body.dark .last-order-store{
+  font-size:16px;
+  font-weight:600;
+  color: #000;
+}
+
+.last-order-meta{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  color:#666;
+}
+
+.last-order-actions{
+  display:flex;
+  gap:10px;
+}
+
+.btn-reorder{
+  flex:1;
+  background:#00b347;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px;
+    font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-reorder:hover{
+  flex:1;
+  background:#34eb7d;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px;
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition: 0.2s ease;
+}
+
+
+.btn-receipt{
+  background:#eee;
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+}
+
+.user-sidemenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  max-width: 90%;
+  height: 100vh;
+  background: var(--bg-color, #fff);
+  color:#000;
+  z-index: 9999;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-sidemenu.hidden {
+  transform: translateX(100%);
+}
+
+.user-sidemenu:not(.hidden) {
+  transform: translateX(0);
+}
+
+/* header */
+.user-header {
+  padding: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* list */
+.user-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.user-menu-list li {
+  padding: 14px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-menu-list li:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.user-menu-list .danger {
+  color: red;
+  font-weight: bold;
+}
+
+/* ===== REGISTER MODAL ===== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: var(--bg-color, #fff);
+  width: 90%;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  animation: modalIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-box h3 {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* inputs */
+.modal-box input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.modal-box input:focus {
+  border-color: #00c853;
+  box-shadow: 0 0 0 2px rgba(0,200,83,0.15);
+}
+
+/* buttons */
+.modal-box .btn {
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: #00c853;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: #00b84a;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #ddd;
+}
+
+.btn-ghost:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* για logout να μη μπορει να μπει  */
+body.locked .page-root {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#login-blocker {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-blocker.hidden {
+  display: none;
+}
+
+.address-blocker-box {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+}
+
+/* favorites page */
+.favorites-page{
+padding:20px;
+}
+
+.favorites-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:18px;
+}
+
+/* empty state */
+.favorites-grid p{
+grid-column:1/-1;
+text-align:center;
+font-size:16px;
+opacity:0.7;
+padding:40px 0;
+}
+
+.store-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:0.25s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.store-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* εικόνα */
+.store-card img{
+  width:100%;
+  height:140px;          /* 🔥 ΕΔΩ μικραίνει */
+  object-fit:cover;      /* crop χωρίς παραμόρφωση */
+}
+
+/* κείμενα */
+.store-card h3{
+  font-size:15px;
+  margin:10px 12px 2px;
+  color: #000;
+  align-items: center;
+  justify-content: center;
+}
+
+.store-card p{
+  font-size:13px;
+  margin:0 12px 12px;
+  opacity:0.7;
+   color: #000;
+}
+
+.close-btn{
+  font-size: 20px;
+  color:#00e676;
+  background-color: none;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  background: transparent;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.close-btn:hover{
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* My Addresses Page */
+.adr-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-address-page{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.my-address-list{
+  width: 100%;
+  max-width: 520px;   /* 👈 κεντρικό container */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 16px 40px;
+}
+
+/* card */
+.address-card{
+  background: var(--card-bg, #ffffff);
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all .25s ease;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.address-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+/* main info */
+.addr-main{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.addr-label{
+  font-size: 13px;
+  font-weight: 600;
+  color: #00b347;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+
+.addr-text{
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.4;
+}
+
+/* badge */
+.badge{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #00b347;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+
+/* actions */
+.addr-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.addr-actions button{
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+/* select */
+.addr-actions button:first-child{
+  background: #f2f4f7;
+  color: #111;
+}
+
+.addr-actions button:first-child:hover{
+  background: #e6e9ed;
+}
+
+/* delete */
+.addr-actions .danger{
+  background: #ffecec;
+  color: #d63031;
+}
+
+.addr-actions .danger:hover{
+  background: #ffd6d6;
+}
+
+/* empty */
+.empty{
+  text-align: center;
+  color: #777;
+  font-size: 15px;
+  margin-top: 40px;
+}
+
+/* ===== Dark Mode ===== */
+
+body.dark .address-card{
+  background: #161a1f;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+body.dark .addr-text{
+  color: #eaeaea;
+}
+
+body.dark .addr-actions button:first-child{
+  background: #222;
+  color: #eee;
+}
+
+body.dark .addr-actions button:first-child:hover{
+  background: #2a2f35;
+}
+
+body.dark .addr-actions .danger{
+  background: rgba(214,48,49,0.15);
+  color: #ff6b6b;
+}
+
+body.dark .addr-actions .danger:hover{
+  background: rgba(225, 30, 30, 0.552);
+  color: #fff;
+}
+
+/* ===== Active Highlight ===== */
+
+.address-card:has(.badge){
+  border: 1px solid rgba(0,179,71,0.35);
+  box-shadow: 0 8px 22px rgba(0,179,71,0.12);
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>FoodRush - Καλάθι</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-extra.css">
+    <link rel="icon" type="image/png" href="icons/icon_192x192.png">
+</head>
+
+<body data-page="cart">
+<div class="page-root" id="pageRoot">
+    <!-- Header -->
+    <header>
+        <h1><a href="index.html" class="logo">FoodRush</a></h1>
+        <button id="themeToggle" class="theme-toggle" aria-label="Theme toggle">
+  <!-- Sun -->
+  <svg id="sunIcon" viewBox="0 0 24 24" width="22" height="22">
+    <path d="M12 4V2m0 20v-2m8-8h2M2 12H4m14.95 6.95l1.41 1.41M5.64 5.64l1.41 1.41m12.9-1.41l-1.41 1.41M5.64 18.36l-1.41 1.41M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8z"/>
+  </svg>
+  <!-- Moon -->
+  <svg id="moonIcon" viewBox="0 0 24 24" width="22" height="22">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+  </svg>
+</button>
+        <nav>
+            <div class="address-box" onclick="openAddressModal()">
+           <span class="address-label">Παράδοση σε:</span>
+          <span id="active-address">—</span>
+          </div>
+             <a href="stores.html"><img src="store_12671935.png" alt="Καλάθι" class="icon"></a>
+            <a href="cart.html" class="cart-icon"> 
+            <img src="shopping-cart_17216306.png" alt="Καλάθι" class="icon"><span id="cart-count">0</span></a>
+            <button class="icon-btn" onclick="handleProfileClick()" title="Προφίλ">
+  <img src="man_14506340.png" alt="Προφίλ" class="icon">
+</button>
+        </nav>
+    </header>
+
+       <main style="padding:40px 20px; max-width:900px; margin:auto;">
+
+  <h2>Το καλάθι μου</h2>
+
+  <!-- ⬇️ ΑΥΤΑ ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΑ -->
+  <div id="cartItems"></div>
+  <p id="cartTotal"></p>
+
+  <button
+  id="goToCheckoutBtn"
+  class="primary-btn"
+  onclick="goToCheckout()"
+  style="margin-top:30px; width:100%;">
+  Ολοκλήρωση Παραγγελίας
+</button>
+
+  <div id="removeConfirmModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Αφαίρεση προϊόντος</h3>
+    <p>Θέλεις σίγουρα να αφαιρέσεις αυτό το προϊόν από το καλάθι;</p>
+
+    <div class="remove-modal-actions">
+  <button id="confirmRemoveBtn" class="danger-btn">Αφαίρεση</button>
+  <button class="cancel-btn" onclick="closeRemoveModal()">Ακύρωση</button>
+</div>
+  </div>
+</div>
+</main>
+  
+<div id="addressModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Οι διευθύνσεις μου</h3>
+    <ul id="addressList"></ul>
+    <!-- ΦΟΡΜΑ (κρυφή στην αρχή) -->
+    <div id="addressForm" class="hidden">
+      <input id="newLabel" placeholder="Π.χ. Σπίτι">
+      <input id="newAddress" placeholder="Οδός, Περιοχή">
+      <ul id="addressSuggestions" class="suggestions hidden"></ul>
+      <button class="btn btn-primary" onclick="addAddress()">
+    Αποθήκευση
+  </button>
+    </div>
+    <button class="btn btn-secondary" onclick="showAddressForm()">
+  ➕ Προσθήκη διεύθυνσης
+</button>
+    <button class="btn btn-ghost" onclick="closeAddressModal()">
+  Κλείσιμο
+</button>
+  </div>
+</div>
+</div>
+
+<div id="userSideMenu" class="user-sidemenu hidden">
+  <div class="user-header">
+    <span id="userFullname">—</span>
+    <button onclick="closeUserMenu()">✖</button>
+  </div>
+
+ <ul class="user-menu-list">
+    <li>📩 Εισερχόμενα</li>
+    <li>⭐ Πόντοι & Ανταμοιβές</li>
+    <li>📦 Παραγγελίες</li>
+    <li onclick="goToMyAddresses()">📍 Οι διευθύνσεις μου</li>
+    <li onclick="goToFavorites()">❤️ Αγαπημένα καταστήματα</li>
+    <li>⭐ Αξιολογήσεις</li>
+    <li>⚙ Ρυθμίσεις</li>
+    <li onclick="logout()">🚪 Αποσύνδεση</li>
+    <li onclick="deleteAccount()" class="danger">🗑 Διαγραφή λογαριασμού</li>
+  </ul>
+</div>
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-center-group">
+      <div class="footer-links">
+        <a href="terms.html">Όροι & Προϋποθέσεις</a>
+        <a href="privacy.html">Πολιτική Απορρήτου</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="contact.html">Επικοινωνία</a>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 FoodRush. All rights reserved.
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-socials">
+    <a href="https://instagram.com" target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+  </svg></a>
+    <a href="https://facebook.com" target="_blank" rel="noopener">      
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+          stroke="currentColor" stroke-width="2"/>
+    <path d="M14 9h-2V7.5c0-.8.5-1 1-1h1V4h-2
+             c-2 0-3 1.3-3 3.2V9H7v3h2v8h3v-8h2.1L14 9z"
+          fill="currentColor"/>
+         </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script src="cart-page.js"></script>
+<script src="address-guard.js"></script>
+<script src="address.js"></script>
+<script src="app.js"></script>
+<script src="checkout.js"></script>
+<script src="/capacitor.js"></script>
+<script src="back.js"></script>
+<script src="store-page.js"></script>
+<script src="user-system.js"></script>
+<script src="my-addresses.js"></script>
+<script src="favorites.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>FoodRush - Κατάστημα</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   <link rel="icon" type="image/png" href="icons/icon_192x192.png">
+</head>
+<body>
+  <div class="page-root" id="pageRoot">
+    <h1><a href="index.html" class="logo">FoodRush</a></h1>
+    <nav>
+      <div class="address-box" onclick="openAddressModal()">
+           <span class="address-label">Παράδοση σε:</span>
+          <span id="active-address">—</span>
+          </div>
+        <a href="stores.html"><img src="store_12671935.png" class="icon" alt="Καταστήματα"></a>
+        <a href="cart.html"><img src="shopping-cart_17216306.png" class="icon" alt="Καλάθι"></a>
+        <a href="login.html"><img src="man_14506340.png" class="icon" alt="Σύνδεση"></a>
+    </nav>
+</header>
+
+<section class="store-detail-section">
+    <div id="storeInfo">
+        <img id="storeImage" src="" alt="Store Image" style="width:100%; max-width:600px; border-radius:16px;">
+        <h2 id="storeName"></h2>
+        <p id="storeHours"></p>
+    </div>
+
+    <h3>Προϊόντα</h3>
+    <div id="productsGrid" class="stores-grid"></div>
+</section>
+</div>
+
+  <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-center-group">
+      <div class="footer-links">
+        <a href="terms.html">Όροι & Προϋποθέσεις</a>
+        <a href="privacy.html">Πολιτική Απορρήτου</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="contact.html">Επικοινωνία</a>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 FoodRush. All rights reserved.
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-socials">
+    <a href="https://instagram.com" target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+  </svg></a>
+    <a href="https://facebook.com" target="_blank" rel="noopener">      
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+          stroke="currentColor" stroke-width="2"/>
+    <path d="M14 9h-2V7.5c0-.8.5-1 1-1h1V4h-2
+             c-2 0-3 1.3-3 3.2V9H7v3h2v8h3v-8h2.1L14 9z"
+          fill="currentColor"/>
+         </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const storesData = {
+    burgerHouse: {
+        name: "Burger House",
+        img: "imgs burgerHouse/patrick-perkins-UPQHac_U_Lg-unsplash.jpg",
+        hours: "Δευ–Κυρ: 11:00–22:00",
+        products: [
+            {name:"Cheese Burger", price:"€6", img:"imgs burgerHouse/amirali-mirhashemian-MocvvWyzNzQ-unsplash.jpg"},
+            {name:"French Fries", price:"€2", img:"imgs burgerHouse/abhishek-hajare-QHE-BP6QcOE-unsplash.jpg"},
+            {name:"Cola", price:"€1.5", img:"imgs burgerHouse/artem-beliaikin-jlWoIsNTKjA-unsplash.jpg"},
+            {name:"Chicken Nuggets", price:"€4", img:"imgs burgerHouse/tyson-e7yjYr8GxN0-unsplash.jpg"},
+            {name:"Milkshake", price:"€3", img:"imgs burgerHouse/victor-rutka-4FujjkcI40g-unsplash.jpg"}
+        ]
+    },
+    pizzaRoma: {
+        name: "Pizza Roma",
+        img: "imgs pizzaRoma/pizza-margarita-with-shrimps-table.jpg",
+        hours: "Δευ–Κυρ: 10:00–23:00",
+        products: [
+            {name:"Margherita", price:"€7", img:"imgs pizzaRoma/rashed-moslem-F76OhvaAYvQ-unsplash.jpg"},
+            {name:"Pepperoni", price:"€8", img:"imgs pizzaRoma/david-foodphototasty-xIqVfW8XUt4-unsplash.jpg"},
+            {name:"Special", price:"€9", img:"imgs pizzaRoma/vegetarian-pizza-with-zucchini-tomato-peppers-mushrooms-wooden-table.jpg"},
+            {name:"Garlic Bread", price:"€3", img:"imgs pizzaRoma/sandevil-sandh-BRMvT4sw-4c-unsplash.jpg"},
+            {name:"Soda", price:"€1.5", img:"imgs pizzaRoma/chris-vanhove-Cu3LwxsKpvw-unsplash.jpg"},
+            {name:"Tiramisu", price:"€4", img:"imgs pizzaRoma/jay-gajjar-lGIXXpeERSM-unsplash.jpg"}
+        ]
+    },
+    coffeeLab: {
+        name: "Coffee Lab",
+        img: "imgs coffeeLab/philip-nestor-V5QPmsIlcTI-unsplash.jpg",
+        hours: "Δευ–Κυρ: 08:00–20:00",
+        products: [
+            {name:"Cappuccino", price:"€3", img:"imgs coffeeLab/anubhav-arora-RFLDagtOsMM-unsplash.jpg"},
+            {name:"Latte", price:"€3.5", img:"imgs coffeeLab/billy-kwok-vfiA7rRtjWo-unsplash.jpg"},
+            {name:"Espresso", price:"€2.5", img:"imgs coffeeLab/nathan-dumlao-H7ETDzUFooQ-unsplash.jpg"},
+            {name:"Hot Chocolate", price:"€4", img:"imgs coffeeLab/elena-leya-NtmNhrdfs-o-unsplash.jpg"},
+            {name:"Croissant", price:"€2", img:"imgs coffeeLab/personalgraphic-com-VzUE5RtCuBA-unsplash.jpg"}
+        ]
+    },
+};
+
+// Παίρνουμε το store από το URL
+const urlParams = new URLSearchParams(window.location.search);
+const storeId = urlParams.get('store');
+
+if(storesData[storeId]) {
+    const store = storesData[storeId];
+    document.getElementById('storeImage').src = store.img;
+    document.getElementById('storeName').textContent = store.name;
+    document.getElementById('storeHours').textContent = `Ώρες Λειτουργίας: ${store.hours}`;
+
+    const productsGrid = document.getElementById('productsGrid');
+    store.products.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'store-card';
+        card.innerHTML = `
+            <img src="${p.img}" alt="${p.name}" style="width:100%; border-radius:12px;">
+            <h4>${p.name}</h4>
+            <p>${p.price}</p>
+        `;
+        productsGrid.appendChild(card);
+    });
+} else {
+    document.getElementById('storeInfo').innerHTML = "<p>Το κατάστημα δεν βρέθηκε.</p>";
+}
+</script>
+<script src="address-guard.js"></script>
+<script src="address.js"></script>
+<script src="/capacitor.js"></script>
+<script src="back.js" type="module"></script>
+
+
+</body>
+</html>

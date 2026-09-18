@@ -1,0 +1,1419 @@
+/* 🔥 KILL mobile blue highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* ΠΡΟΣΟΧΗ: δουλεύει σε Webkit browsers */
+body::-webkit-scrollbar {
+  width: 11px;
+  background: var(--scrollbar-bg);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #00c853;
+  border-radius: 10px;
+  border: 3px solid #e8e8e8;
+  transition: none; /* ⬅️ ΚΟΒΕΙ ΤΟ FADE */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #00c853; /* ίδιο ακριβώς */
+}
+
+body::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* ============================= */
+/* Reset & Base Styles */
+/* ============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --primary: #00c853;
+    --dark: #222;
+    --gray: #666;
+    --light: #f7f7f7;
+    --white: #fff;
+
+    --bg: #f7f7f7;
+    --text: #222;
+    --card: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+     --scrollbar-bg: #f0f0f0;
+  --scrollbar-thumb: #00c853; /* καταπράσινο FoodRush */
+  --scrollbar-thumb-hover: #00b347;
+  --scrollbar-track: #e8e8e8;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+    background:
+      linear-gradient(rgba(205, 237, 208, 0.8), rgba(205, 237, 208, 0.8)),
+      url("chad-montano-MqT0asuoIcU-unsplash.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+     background-size: cover;
+      background-attachment: scroll; /* ΠΟΛΥ σημαντικό για mobile */
+      overflow-x: hidden;
+}
+
+body.dark {
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("chad-montano-MqT0asuoIcU-unsplash.jpg");
+  --bg: #121212;
+  --text: #f5f5f5;
+  --card: #1e1e1e;
+  --primary: #00e676;
+  --gray: #aaa;
+  --shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Dark theme – address modal text fix */
+body.dark .modal-box {
+  background: #ffffff;
+  color: #111;
+}
+
+body.dark .modal-box h3,
+body.dark .modal-box strong,
+body.dark .modal-box small,
+body.dark .modal-box li {
+  color: #111;
+}
+
+.theme-toggle {
+  background: var(--card);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+.theme-toggle svg {
+  stroke: var(--text);
+  fill: none;
+  stroke-width: 2;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* visibility */
+#moonIcon { display: none; }
+
+body.dark #sunIcon { display: none; }
+body.dark #moonIcon { display: block; }
+
+/* ============================= */
+/* Header */
+/* ============================= */
+.logo {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+header {
+    background: var(--white);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    color: var(--primary);
+    font-size: 28px;
+}
+
+nav a,
+nav .icon-btn {
+  margin-left: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* icons */
+nav a img.icon,
+nav .icon-btn img.icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+/* hover */
+nav a:hover img.icon,
+nav .icon-btn:hover img.icon {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* focus / active */
+nav a:focus,
+nav a:active,
+nav .icon-btn:focus,
+nav .icon-btn:active {
+  outline: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+
+/* ============================= */
+/* Hero Section */
+/* ============================= */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #029640;
+}
+
+body.dark .hero-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #00e676;
+}
+
+.hero-section p {
+    color: var(--gray);
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+body.dark .hero-section p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-section input[type="text"] {
+    padding: 12px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+
+.hero-section input[type="text"]:focus {
+    border-color: var(--primary);
+}
+
+.hero-section button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #00b347;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.hero-section button:hover {
+    background: #34eb7d;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* INITIAL STATE */
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
+}
+
+/* WHEN VISIBLE */
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ============================= */
+/* Categories Section */
+/* ============================= */
+.categories-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.categories-section h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #029640;
+}
+
+body.dark .categories-section h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #00e676;
+}
+
+.categories-section ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.categories-section ul li {
+    min-width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: #00b347;
+    color: var(--white);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.categories-section ul li:hover {
+   background: #34eb7d;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.categories-section li.active {
+  background: #00b14f;
+  color: white;
+}
+
+/*slideshow*/
+#slideshow {
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 16px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slideshow img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: none;
+    transition: opacity 0.6s ease-in-out;
+}
+/* ============================= */
+/* Stores Section */
+/* ============================= */
+.stores-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.stores-section h3 {
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #029640;
+}
+
+body.dark .stores-section h3 {
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #00e676;
+}
+
+.stores-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.store-card {
+    background: var(--white);
+    width: 220px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.store-card h4 {
+    margin: 10px 0 5px;
+    color: #000;
+}
+
+.store-card p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.store-detail-section {
+  padding: 60px 20px;
+  text-align: center;
+  color: #029640;
+}
+
+body.dark .store-detail-section {
+  padding: 60px 20px;
+  text-align: center;
+  color:  #00e676;
+}
+
+.store-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.store-image {
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 0 auto 25px;
+  display: block;
+}
+
+.store-title-wrapper {
+  display:flex;
+  flex-direction:column;   
+  align-items:center;      
+  justify-content:center;
+  gap:12px;          
+  margin-bottom: 10px;
+}
+
+.store-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align:center;
+}
+
+.store-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-to-cart {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px 14px;
+
+  background: #00b347;
+  border: none;
+  border-radius: 14px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transition: 
+     transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Hover */
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  background: #34eb7d;
+}
+
+/* Click */
+.add-to-cart:active {
+  transform: scale(0.97);
+}
+
+.add-to-cart.added {
+  background: #e8f5e9;
+  color: #2e7d32;
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25);
+}
+
+.favorite-btn,
+.info-btn  {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favorite-btn:hover,
+.info-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition: 0.2s ease;
+}
+
+.favorite-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: 0.2s ease;
+}
+
+.favorite-btn.active {
+  color: #f91612;
+}
+
+.favorite-btn.active svg {
+  fill: currentColor;
+}
+
+/* 👇 pressed effect (temporary only while clicking) */
+.favorite-btn:active {
+  transform: scale(0.9);
+}
+
+.info-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.5px;
+}
+
+.store-actions {
+  display:flex;
+  gap:12px;               
+  justify-content:center;
+  align-items:center;
+  position: static; 
+}
+
+.store-hours {
+  font-size: 16px;
+  color: #494949;
+}
+
+.store-hours::after{
+  color:#fff;
+}
+
+.products-title {
+  font-size: 26px;
+  margin-top: 40px;
+  color: #000;
+}
+
+body.dark .products-title {
+  font-size: 26px;
+  margin-top: 40px;
+  color: #fff;
+}
+/* ============================= */
+/* Product Cards (Store Page) */
+/* ============================= */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background: var(--white);
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product-card h4 {
+  margin: 12px 0 6px;
+  font-size: 16px;
+  color: #000;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #029640;
+}
+
+/*για filtering στα κουμπια*/
+.hidden-store {
+  display: none;
+}
+
+/*για διευθυνση στο header*/
+.address-box {
+  max-width: 180px;
+  min-width: 0;  /* ή 180px για mobile */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.address-label {
+  color: #666;
+  display: block;
+  font-size: 11px;
+}
+
+#active-address {
+  display: block;
+  max-width: 100%;
+  font-weight: bold;
+  color: #00b347;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.address-blocker {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.96);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestions {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: #f3f3f3;
+}
+
+.address-blocker.hidden {
+  display: none;
+}
+
+.address-blocker-box {
+  text-align: center;
+  padding: 30px;
+  max-width: 320px;
+}
+
+.address-blocker-box h2 {
+  color: #00b347;
+  margin-bottom: 10px;
+}
+
+.address-blocker-box button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #00b347;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal {
+  pointer-events: all;  
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 380px;
+}
+
+/* ===== BUTTON SYSTEM ===== */
+.btn {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary – Αποθήκευση */
+.btn-primary {
+  background: #ff6b35;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:hover {
+  background: #ff5a1f;
+  transform: translateY(-1px);
+  outline: 2px solid #00b14f;
+  outline-offset: 2px;
+}
+
+/* Secondary – Προσθήκη */
+.btn-secondary {
+  background: #f4f4f5;
+  color: #222;
+  border: 1px solid #e4e4e7;
+}
+
+.btn-secondary:hover {
+  background: #eaeaec;
+  outline: 2px solid #00b14f;
+  outline-offset: 2px;
+}
+
+/* Ghost – Κλείσιμο */
+.btn-ghost {
+  background: transparent;
+  color: #777;
+}
+
+.btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #000;
+  outline: 2px solid #00b14f;
+  outline-offset: 2px;
+}
+
+/* Click feedback */
+.btn:active {
+  transform: scale(0.97);
+}
+
+  /* Καθαρό cart styles */
+        .cart-section {
+            flex: 1; /* ώστε το footer να μένει κάτω */
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cart-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .cart-icon {
+  position: relative;
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  text-align: center;
+}
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            padding: 15px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            color: #000;
+              transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .cart-item.removing {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .cart-item-details p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-item-actions input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-remove-btn{
+            padding: 12px 20px;
+    background: #00b347;
+    color: var(--white);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+        }
+
+        .cart-remove-btn:hover{
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+        }
+
+        .cart-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cart-store-btn {
+  background:#00b347;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.cart-store-btn:hover {
+  background: var(--primary);
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #f2f1f1;
+  color:var(--primary)
+}
+
+/* 🔥 ΠΑΤΗΜΑ */
+.qty-btn:active {
+  transform: scale(0.88);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.qty-btn:hover {
+  background: #f4f3f3;
+  transform: scale(1.05);
+}
+
+.qty-value {
+ min-width: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.remove-modal-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Ακύρωση */
+.cancel-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background:var(--primary);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+        }
+
+  .cancel-btn:hover{
+    opacity:0.7;
+  }
+
+/* Αφαίρεση (danger) */
+.danger-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #e53935;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.danger-btn:hover {
+  background: #c62828;
+}
+
+        @media (max-width: 600px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item-actions {
+                margin-top: 10px;
+            }
+        }
+
+.cart-total {
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 14px 18px;
+  border-radius: 18px;
+  margin: 14px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total .label {
+  color: #222;
+  font-weight: 600;
+}
+
+.cart-total .amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00c853;
+}
+
+body.dark .cart-total{
+  background:#1e1e1e;
+  color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+
+body.dark .cart-total .amount{
+  color:#00e676;
+}
+      
+body.dark .cart-total .label {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* Login / Register Section */
+/* ============================= */
+.login-section {
+    background: white;
+    padding: 32px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    margin: 40px auto;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.login-section h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.login-form input:focus {
+    border-color: var(--primary);
+}
+
+.login-form button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-form button:hover {
+    background: #00b347;
+}
+
+.toggle-btn {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 10px;
+    background: #eee;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
+#loginMessage {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  opacity: 0.7;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+}
+
+
+/* ============================= */
+/* Footer */
+/* ============================= */
+.footer {
+  margin-top: auto;
+  width: 100%;
+  overflow-x: hidden;
+  background: #222;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  padding: 0 16px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ⬅️ κεντράρει το group */
+  position: relative;
+}
+
+/* CENTER GROUP */
+.footer-center-group {
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #00b347;
+}
+
+.footer-copy {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* RIGHT SOCIALS */
+.footer-right {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-right svg {
+  width: 24px;
+  height: 24px;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.footer-right a:hover svg {
+  color: #00b347;
+}
+
+/* =========================
+   LEGAL PAGES FIX (SAFE)
+   ========================= */
+
+.legal-page {
+  display: block;
+  padding: 60px 16px;
+  background: #f5f7fa;
+}
+
+.legal-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 28px;
+  padding: 48px 40px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* Headings */
+.legal-card h2 {
+  font-size: 32px;
+  color: #00b347;
+  margin-bottom: 10px;
+}
+
+.legal-card h3 {
+  font-size: 20px;
+  color: #00b347;
+  margin-bottom: 8px;
+}
+
+/* Text */
+.legal-card p,
+.legal-card li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.legal-card section {
+  margin-bottom: 28px;
+}
+
+.legal-card ul {
+  padding-left: 20px;
+}
+
+/* Updated label */
+.updated {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 32px;
+}
+
+/* ============================= */
+/* Responsive */
+/* ============================= */
+@media (max-width: 768px) and (min-width: 481px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-section input[type="text"] {
+        width: 200px;
+    }
+
+    .stores-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .store-card {
+        width: 90%;
+    }
+
+    .categories-section ul li {
+        flex: 1 1 30%;
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h2 {
+        font-size: 22px;
+    }
+
+    .hero-section p {
+        font-size: 14px;
+    }
+
+    .hero-section input[type="text"] {
+        width: 100%;
+    }
+
+    .categories-section ul {
+     flex-direction: column;
+     align-items: center;
+     gap: 10px;
+    }
+
+    .categories-section ul li {
+     width: 80%;
+     max-width: 260px;
+     flex: none;
+     text-align: center;
+    }
+
+    .login-section {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .login-form input, .login-form button, .toggle-btn {
+        font-size: 14px;
+    }
+
+  /* Footer mobile layout */
+  .footer-content{
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-right{
+    position: static;        /* αφαιρεί το absolute */
+    margin-top: 12px;        /* τα κατεβάζει */
+    justify-content: center; /* κεντράρισμα */
+  }
+}
+
+.app-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*για animation starting video*/
+
+/* ============================= */
+/* APP PAGE TRANSITION SYSTEM */
+/* ============================= */
+
+.app-transition {
+   backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform 0.55s cubic-bezier(.77,0,.18,1);
+}
+
+.app-transition.active {
+  transform: translateY(0);
+}
+
+.page-root {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+
+.page-root.show {
+  opacity: 1;
+  transform: translateY(0);
+}

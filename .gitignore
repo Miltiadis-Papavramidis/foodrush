@@ -1,0 +1,14 @@
+node_modules/
+.idea/
+
+.DS_Store
+Thumbs.db
+
+.env
+.env.*
+!.env.example
+
+dist/
+build/
+
+all_generated_icons.zip

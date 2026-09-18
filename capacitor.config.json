@@ -1,0 +1,8 @@
+{
+  "appId": "com.foodrush.app",
+  "appName": "FoodRush",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Διεύθυνση Παράδοσης</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icons/icon_192x192.png">
+</head>
+<body>
+
+<main style="max-width:400px;margin:80px auto;text-align:center;">
+  <h2>Πού να στείλουμε την παραγγελία;</h2>
+
+  <form id="addressForm">
+    <input type="text" id="address" placeholder="Οδός & Αριθμός" required>
+    <input type="text" id="city" placeholder="Πόλη" required>
+
+    <button type="submit">Συνέχεια</button>
+  </form>
+</main>
+
+<script>
+document.getElementById("addressForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const address = document.getElementById("address").value.trim();
+  const city = document.getElementById("city").value.trim();
+
+  if (!address || !city) return;
+
+  localStorage.setItem("userAddress", JSON.stringify({ address, city }));
+
+  window.location.href = "index.html";
+});
+</script>
+<script src="back.js" type="module"></script>
+
+
+</body>
+</html>
